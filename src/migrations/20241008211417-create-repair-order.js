@@ -17,7 +17,7 @@ module.exports = {
       },
       id_dispositivo: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'Devices', 
           key: 'id'
@@ -27,7 +27,7 @@ module.exports = {
       },
       id_usuario: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'Users', 
           key: 'id'

@@ -4,14 +4,24 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class RepairOrder extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
     static associate(models) {
-      // define association here
+      RepairOrder.belongsTo(models.User, {
+        foreignKey: 'id_usuario',
+        as: 'tecnico'
+      });
+
+      RepairOrder.belongsTo(models.Device, {
+        foreignKey: 'id_dispositivo',
+        as: 'dispositivo'
+      });
+
+      RepairOrder.hasMany(models.Repair, {
+        foreignKey: 'id_orden',
+        as: 'reparaciones'
+      });
     }
+    
   }
   RepairOrder.init({
     fecha: DataTypes.DATE,
