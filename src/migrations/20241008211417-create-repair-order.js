@@ -18,12 +18,13 @@ module.exports = {
       id_dispositivo: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'Devices', 
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+        
+        // references: {
+        //   model: 'Devices', 
+        //   key: 'id'
+        // },
+        // onUpdate: 'CASCADE',
+        // onDelete: 'SET NULL'
       },
       id_usuario: {
         type: Sequelize.INTEGER,
