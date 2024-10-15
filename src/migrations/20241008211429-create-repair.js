@@ -11,7 +11,7 @@ module.exports = {
       },
       id_orden: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'RepairOrders', 
           key: 'id'

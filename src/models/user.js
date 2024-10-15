@@ -7,7 +7,11 @@ const bcrypt = require('bcryptjs'); // Importar bcrypt
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasMany(models.Recipe, { foreignKey: 'UserId' });
+      
+      User.hasMany(models.RepairOrder, {
+        foreignKey: 'id_usuario',
+        as: 'ordenes_reparación'
+      });
     }
   }
 
