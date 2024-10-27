@@ -13,15 +13,44 @@ const createOrder = async (req, res) => {
     }
   };
 
+// const getOrders = async (req, res) => {
+//     try {
+//       const devices = await db.RepairOrder.findAll();
+//       res.status(200).json(devices);
+//     } catch (error) {
+//       console.error(error); 
+//       res.status(500).json({ error: 'Error obteniendo las ordenes' });
+//     }
+//   };
 const getOrders = async (req, res) => {
-    try {
-      const devices = await db.RepairOrder.findAll();
-      res.status(200).json(devices);
-    } catch (error) {
-      console.error(error); 
-      res.status(500).json({ error: 'Error obteniendo las ordenes' });
-    }
-  };
+  try {
+    const orders = await db.RepairOrder.findAll({
+      include: [
+        {
+          model: db.User,
+          as: 'tecnico', // Nombre de la asociación en el modelo
+          attributes: ['id', 'name', 'email'] // Atributos específicos del usuario (ajusta según tu modelo de usuario)
+        },
+        {
+          model: db.Device,
+          as: 'dispositivo', // Nombre de la asociación en el modelo
+          attributes: ['id', 'marca', 'modelo', 'estado'] // Atributos específicos del dispositivo
+        },
+        {
+          model: db.Repair,
+          as: 'reparaciones', // Nombre de la asociación en el modelo
+          attributes: ['id', 'fecha_inicio', 'fecha_fin', 'costo_real'] // Atributos específicos de la reparación
+        }
+      ]
+    });
+    
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error(error); 
+    res.status(500).json({ error: 'Error obteniendo las órdenes' });
+  }
+};
+
 
 const getOrderById = async (req, res) => {
     try {

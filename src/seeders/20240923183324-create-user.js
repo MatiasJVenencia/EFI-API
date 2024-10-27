@@ -10,11 +10,19 @@ module.exports = {
         role: 'admin',
         createdAt: new Date(),
         updatedAt: new Date(),
+      },
+      {
+        name: 'Leandro Brey',
+        email: 'brey@gmail.com',
+        password: 'password123',
+        role: 'tecnico',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       }
     ], {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users', { email: 'juan@gmail.com' }, {});
+    return queryInterface.bulkDelete('Users', null,{});
   }
 };

@@ -15,8 +15,28 @@ const createRepair = async (req, res) => {
 
 const getRepairs = async (req, res) => {
     try {
-      const devices = await db.Repair.findAll();
-      res.status(200).json(devices);
+      const repairs = await db.Repair.findAll({
+        include: [
+          {
+            model: db.RepairOrder,
+            as: 'ordenReparacion',
+            attributes: ['id', 'problema_reportado'], // Trae el campo específico de la orden de reparación
+            include: [
+              {
+                model: db.Device,
+                as: 'dispositivo', // Asociación definida en RepairOrder
+                attributes: ['id', 'marca', 'modelo', 'estado'] // Atributos específicos del dispositivo
+              },
+              {
+                model: db.User,
+                as: 'tecnico', // Asociación definida en RepairOrder
+                attributes: ['id', 'name', 'email'] // Atributos específicos del técnico
+              }
+            ]
+          }
+        ]
+      });
+      res.status(200).json(repairs);
     } catch (error) {
       console.error(error); 
       res.status(500).json({ error: 'Error obteniendo las reparaciones' });

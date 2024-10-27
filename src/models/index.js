@@ -12,7 +12,7 @@ const db = {};
 // Inicialización de los modelos
 db.User = require('./user')(sequelize, Sequelize.DataTypes);
 db.Repair = require('./repair')(sequelize, Sequelize.DataTypes);
-db.RepairOrder = require('./repair-order')(sequelize, Sequelize.DataTypes);
+db.RepairOrder = require('./repairorder')(sequelize, Sequelize.DataTypes);
 db.Device = require('./device')(sequelize, Sequelize.DataTypes);
 
 // Configuración de asociaciones
