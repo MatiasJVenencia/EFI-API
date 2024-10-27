@@ -17,16 +17,6 @@ module.exports = {
       },
       id_dispositivo: {
         type: Sequelize.INTEGER,
-<<<<<<< HEAD
-        allowNull: false,
-        
-        // references: {
-        //   model: 'Devices', 
-        //   key: 'id'
-        // },
-        // onUpdate: 'CASCADE',
-        // onDelete: 'SET NULL'
-=======
         allowNull: true,
         references: {
           model: 'Devices', 
@@ -34,7 +24,6 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
->>>>>>> 0ce11e971214aefea8dc3ba9947667eeb7e2f1db
       },
       id_usuario: {
         type: Sequelize.INTEGER,
