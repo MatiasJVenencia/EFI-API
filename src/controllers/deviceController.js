@@ -26,7 +26,7 @@ const getDevices = async (req, res) => {
 const getDeviceById = async (req, res) => {
     try {
       const { id } = req.params;
-      const device = await db.device.findByPk(id);
+      const device = await db.Device.findByPk(id);
   
       if (!device) {
         return res.status(404).json({ error: 'Dispositivo no encontrado' });
