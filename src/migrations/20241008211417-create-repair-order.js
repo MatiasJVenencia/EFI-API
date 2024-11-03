@@ -23,7 +23,7 @@ module.exports = {
           key: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+        onDelete: 'CASCADE'
       },
       id_usuario: {
         type: Sequelize.INTEGER,

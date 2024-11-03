@@ -1,11 +1,12 @@
 const db = require('../models');
 const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
 
 const createUser = async (req, res) => {
   try {
     // Extraemos los datos del cuerpo de la solicitud (name, email, password, role)
     const { name, email, password, role } = req.body;
-
+    
     // Creamos un nuevo usuario en la base de datos utilizando Sequelize
     const user = await db.User.create({ name, email, password, role });
 
@@ -34,7 +35,8 @@ const loginUser = async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ error: 'Contraseña incorrecta' }); // Si no coincide, devolvemos un error
     }
-    res.status(200).json({ message: 'Login exitoso' });
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    res.status(200).json({ role: user.role, token: token });
   } catch (error) {
     console.error(error); // Imprime el error en consola si ocurre
     res.status(500).json({ error: 'Error en el login' }); // Devuelve un mensaje de error si hay un problema en el servidor
