@@ -20,17 +20,17 @@ const getRepairs = async (req, res) => {
           {
             model: db.RepairOrder,
             as: 'ordenReparacion',
-            attributes: ['id', 'problema_reportado'], // Trae el campo específico de la orden de reparación
+            attributes: ['id', 'problema_reportado'], 
             include: [
               {
                 model: db.Device,
-                as: 'dispositivo', // Asociación definida en RepairOrder
-                attributes: ['id', 'marca', 'modelo', 'estado'] // Atributos específicos del dispositivo
+                as: 'dispositivo', 
+                attributes: ['id', 'marca', 'modelo', 'estado']
               },
               {
                 model: db.User,
-                as: 'tecnico', // Asociación definida en RepairOrder
-                attributes: ['id', 'name', 'email'] // Atributos específicos del técnico
+                as: 'tecnico', 
+                attributes: ['id', 'name', 'email'] 
               }
             ]
           }
@@ -46,7 +46,28 @@ const getRepairs = async (req, res) => {
 const getRepairById = async (req, res) => {
     try {
       const { id } = req.params;
-      const repair = await db.Repair.findByPk(id);
+      const repair = await db.Repair.findByPk(id, {
+        include: [
+          {
+            model: db.RepairOrder,
+            as: 'ordenReparacion', 
+            attributes: ['problema_reportado'],
+            include: [
+              {
+                model: db.Device,
+                as: 'dispositivo', 
+                attributes: ['marca', 'modelo', 'estado']
+              },
+              {
+                model: db.User,
+                as: 'tecnico', 
+                attributes: ['name'] 
+              }
+            ]
+          }
+          
+        ]
+      });
   
       if (!repair) {
         return res.status(404).json({ error: 'Reparación no encontrada' });

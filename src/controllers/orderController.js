@@ -28,18 +28,18 @@ const getOrders = async (req, res) => {
       include: [
         {
           model: db.User,
-          as: 'tecnico', // Nombre de la asociación en el modelo
-          attributes: ['id', 'name', 'email'] // Atributos específicos del usuario (ajusta según tu modelo de usuario)
+          as: 'tecnico', 
+          attributes: ['id', 'name', 'email']
         },
         {
           model: db.Device,
-          as: 'dispositivo', // Nombre de la asociación en el modelo
-          attributes: ['id', 'marca', 'modelo', 'estado'] // Atributos específicos del dispositivo
+          as: 'dispositivo', 
+          attributes: ['id', 'marca', 'modelo', 'estado'] 
         },
         {
           model: db.Repair,
-          as: 'reparaciones', // Nombre de la asociación en el modelo
-          attributes: ['id', 'fecha_inicio', 'fecha_fin', 'costo_real'] // Atributos específicos de la reparación
+          as: 'reparaciones', 
+          attributes: ['id', 'fecha_inicio', 'fecha_fin', 'costo_real'] 
         }
       ]
     });
@@ -55,7 +55,20 @@ const getOrders = async (req, res) => {
 const getOrderById = async (req, res) => {
     try {
       const { id } = req.params;
-      const order = await db.RepairOrder.findByPk(id);
+      const order = await db.RepairOrder.findByPk(id, {
+        include: [
+          {
+            model: db.User,
+            as: 'tecnico', 
+            attributes: ['name'] 
+          },
+          {
+            model: db.Device,
+            as: 'dispositivo', 
+            attributes: ['marca', 'modelo', 'estado'] 
+          }
+        ]
+      });
   
       if (!order) {
         return res.status(404).json({ error: 'Orden no encontrada' });
