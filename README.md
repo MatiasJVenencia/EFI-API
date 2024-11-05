@@ -52,24 +52,7 @@ npx sequelize-cli db:seed:all
 Inicia el servidor con el siguiente comando:  
 npm start   
 
-## Endpoints
 
-### 1. Usuarios
-
-#### Crear un Usuario
-
-- **URL:** `/api/users`
-- **Método:** `POST`
-- **Descripción:** Crea un nuevo usuario.
-- **Cuerpo de la Solicitud:**
-  ```json
-  {
-    "name": "Nombre del Usuario",
-    "email": "email@example.com",
-    "password": "contraseña_segura",
-    "role": "tecnico"
-  }
-```
 
 
 
