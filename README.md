@@ -100,12 +100,14 @@ npm start
    ***Código: 200 OK***
    ***Ejemplo de Respuesta:***
 
-   
     ```json
     {
-    "role": "tecnico",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzMwNzg2Mzk2LCJleHAiOjE3MzA3ODk5OTZ9.s0u79t1PU5Mfll6ZCixRoSBnTEkKGaKVSCm1bubZQpc"
-  }
+        "role": "tecnico",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzMwNzg2Mzk2LCJleHAiOjE3MzA3ODk5OTZ9.s0u79t1PU5Mfll6ZCixRoSBnTEkKGaKVSCm1bubZQpc"
+    }
+
+
+ 
  ###  Obtener el perfil del usuario autenticado.
 
 - **URL:** `/api/users/:id`
@@ -120,14 +122,14 @@ npm start
    
     ```json
     {
-    "id": 1,
-    "name": "Juan Perez",
-    "email": "juan@gmail.com",
-    "password": "password123",
-    "role": "admin",
-    "createdAt": "2024-10-31T13:27:46.000Z",
-    "updatedAt": "2024-10-31T13:27:46.000Z"
-  }
+        "id": 1,
+        "name": "Juan Perez",
+        "email": "juan@gmail.com",
+        "password": "password123",
+        "role": "admin",
+        "createdAt": "2024-10-31T13:27:46.000Z",
+        "updatedAt": "2024-10-31T13:27:46.000Z"
+        }
 
  ### 2. Dispositivos
 
@@ -168,28 +170,28 @@ npm start
     ***Código: 200 OK***
     ***Ejemplo de Respuesta:***
     ```json
- [
-  {
-    "id": 1,
-    "marca": "Apple",
-    "modelo": "iPhone 13",
-    "tipo": "Smartphone",
-    "número_serie": "ABC123XYZ",
-    "estado": "En Reparación",
-    "createdAt": "2024-10-31T13:27:46.000Z",
-    "updatedAt": "2024-11-04T20:15:21.000Z"
-  },
-  {
-    "id": 2,
-    "marca": "Samsung",
-    "modelo": "Galaxy S21",
-    "tipo": "Smartphone",
-    "número_serie": "XYZ789ABC",
-    "estado": "En reparación",
-    "createdAt": "2024-10-31T13:27:46.000Z",
-    "updatedAt": "2024-10-31T13:27:46.000Z"
-  }
- ]
+    [
+    {
+        "id": 1,
+        "marca": "Apple",
+        "modelo": "iPhone 13",
+        "tipo": "Smartphone",
+        "número_serie": "ABC123XYZ",
+        "estado": "En Reparación",
+        "createdAt": "2024-10-31T13:27:46.000Z",
+        "updatedAt": "2024-11-04T20:15:21.000Z"
+    },
+    {
+        "id": 2,
+        "marca": "Samsung",
+        "modelo": "Galaxy S21",
+        "tipo": "Smartphone",
+        "número_serie": "XYZ789ABC",
+        "estado": "En reparación",
+        "createdAt": "2024-10-31T13:27:46.000Z",
+        "updatedAt": "2024-10-31T13:27:46.000Z"
+    }
+    ]
 
 #### Actualizar los datos de un dispositivo 
 
@@ -220,7 +222,7 @@ npm start
   "updatedAt": "2024-10-31T13:27:46.000Z"
   }
 
-  #### Eliminar un dispositivo 
+#### Eliminar un dispositivo 
 
 - **URL:** `/api/devices/:id`
 - **Método:** `DELETE`
@@ -446,7 +448,7 @@ npm start
   "updatedAt": "2024-11-05T06:49:19.691Z"
   }
 
-  #### Eliminar una reparación 
+#### Eliminar una reparación 
 
 - **URL:** `/api/repairs/:id`
 - **Método:** `DELETE`
