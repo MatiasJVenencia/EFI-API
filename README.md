@@ -342,7 +342,7 @@ npm start
   "updatedAt": "2024-11-05T06:40:43.065Z"
   }
 
-  #### Eliminar una orden de reparación 
+#### Eliminar una orden de reparación 
 
 - **URL:** `/api/orders/:id`
 - **Método:** `DELETE`
