@@ -1,4 +1,4 @@
-# Node.js + Sequelize - API-REST-EFI
+# EFI-API
 
 Este proyecto es una API construida con Node.js, Express, Sequelize y MySQL.
 
@@ -73,6 +73,8 @@ npm start
 ├── createDatabase.js              # Crear database a traves de un archivo.js  
 ├── package.json                   # Dependencias del proyecto y scripts  
 └── server.js                      # Configuración del servidor Express  
+
+
 
 
 
