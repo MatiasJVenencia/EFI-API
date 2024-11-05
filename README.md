@@ -1,4 +1,4 @@
-# Node.js + Sequelize - API-REST-EFI
+# EFI-API
 
 Este proyecto es una API construida con Node.js, Express, Sequelize y MySQL.
 
@@ -14,7 +14,7 @@ Este proyecto es una API construida con Node.js, Express, Sequelize y MySQL.
 
 ```bash
 git clone <URL-del-repositorio>
-cd API-REST-EFI
+cd EFI-API
 ```
 
 ### 2. Instala las dependencias
@@ -27,6 +27,7 @@ DB_PASSWORD = root1234 - contraseña de mysql personal
 DB_DATABASE = nombre_de_tu_db - nombre de base de datos de mysql personal   
 DB_HOST = 127.0.0.1    
 PORT = 4000   
+JWT_SECRET = "myVerySecureAndUniqueSecretKey12345!" - clave secreta para verificar tokens
 ```
 
 ### 4. Crea la base de datos en MySQL:
@@ -49,26 +50,11 @@ npx sequelize-cli db:seed:all
 
 ### 7. Ejecutar el Servidor  
 Inicia el servidor con el siguiente comando:  
-npm start o npm run dev  
+npm start   
 
 
 
-## Comandos de Sequelize
-#### 1. Crear un nuevo modelo  
-Para crear un modelo y su migración correspondiente:  
-npx sequelize-cli model:generate --name <ModelName> --attributes field1:type,field2:type  
 
-##### Ejemplo:   
-npx sequelize-cli model:generate --name Product --attributes name:string,price:float
-
-#### 2. Ejecutar migraciones  
-npx sequelize-cli db:migrate
-
-### 3. Deshacer la última migración  
-npx sequelize-cli db:migrate:undo
-
-### 4. Crear un nuevo seeders
-npx sequelize-cli seed:generate --name create-user
 
 ## Estructura del Proyecto
 ├── src  
@@ -87,6 +73,8 @@ npx sequelize-cli seed:generate --name create-user
 ├── createDatabase.js              # Crear database a traves de un archivo.js  
 ├── package.json                   # Dependencias del proyecto y scripts  
 └── server.js                      # Configuración del servidor Express  
+
+
 
 
 
